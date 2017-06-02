@@ -9,10 +9,28 @@
 <body>
 <div ng-app="angularBlackbox">
     <div ng-controller="MyController">
-        <input type="text" ng-model="data.message">
-        <h1>{{ data.message }}</h1>
-        <h1>{{ reversedMessage(data.message) }}</h1>
-        <h1>{{ data.message | reverse }}</h1>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>name</th>
+                <th>gender</th>
+                <th>company</th>
+                <th>balance</th>
+                <th>phone</th>
+                <th>address</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="user in users">
+                <td>{{ user.name }}</td>
+                <td>{{ user.gender }}</td>
+                <td>{{ user.company }}</td>
+                <td>{{ user.balance }}</td>
+                <td>{{ user.phone }}</td>
+                <td>{{ user.address }}</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 
