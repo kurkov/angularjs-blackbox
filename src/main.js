@@ -2,7 +2,7 @@ var app = angular.module("angularBlackbox", []);
 
 app.directive("mydirective", function () {
     return {
-        restrict: "C",
+        restrict: "M",
         link: function () {
             alert("It works!!!");
         }
