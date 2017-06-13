@@ -2,7 +2,9 @@ var app = angular.module("angularBlackbox", []);
 
 app.directive("mydirective", function () {
     return {
-        restrict: "E",
-        template: "<div>Hello, this is my custom directive!</div>"
+        restrict: "A",
+        link: function () {
+            alert("It works!!!");
+        }
     }
 });
