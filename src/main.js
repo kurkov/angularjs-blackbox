@@ -1,21 +1,25 @@
 var app = angular.module("angularBlackbox", []);
 
-app.directive("mydirective1", function () {
+app.directive("enter", function () {
     return {
         restrict: "A",
         priority: 100,
-        link: function () {
-            alert("mydirective1 works!!!");
+        link: function (scope, element) {
+            element.bind("mouseenter", function () {
+                console.log("Inside!");
+            });
         }
     }
 });
 
-app.directive("mydirective2", function () {
+app.directive("leave", function () {
     return {
         restrict: "A",
-        priority: 200,
-        link: function () {
-            alert("mydirective2 works!!!");
+        priority: 100,
+        link: function (scope, element) {
+            element.bind("mouseleave", function () {
+                console.log("Outside!");
+            });
         }
     }
 });
