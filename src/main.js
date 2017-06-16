@@ -13,13 +13,9 @@ app.directive("enter", function () {
 });
 
 app.directive("leave", function () {
-    return {
-        restrict: "A",
-        priority: 100,
-        link: function (scope, element) {
-            element.bind("mouseleave", function () {
-                console.log("Outside!");
-            });
-        }
+    return function (scope, element) {
+        element.bind("mouseleave", function () {
+            console.log("Outside!");
+        });
     }
 });
