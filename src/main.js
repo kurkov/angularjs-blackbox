@@ -1,15 +1,19 @@
 var app = angular.module("angularBlackbox", []);
 
-app.directive("highlight", function () {
-    return {
-        restrict: "A",
-        link: function (scope, element, attrs) {
-            element.bind("mouseenter", function () {
-                element.addClass(attrs.highlight);
-            });
-            element.bind("mouseleave", function () {
-                element.removeClass(attrs.highlight);
-            });
-        }
+app.controller("AppCtrl", function ($scope) {
+    $scope.showHelloMessage = function () {
+        alert("showHelloMessage");
+    };
+
+    $scope.showName = function () {
+        alert("showName");
+    };
+});
+
+app.directive("applyMethod", function () {
+    return function (scope, element, attrs) {
+        element.bind("mouseenter", function () {
+            scope.$apply(attrs.applyMethod);
+        });
     }
 });

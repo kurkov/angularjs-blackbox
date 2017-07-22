@@ -8,11 +8,13 @@
 </head>
 <body>
 <div ng-app="angularBlackbox">
-    <div class="alert" highlight="alert-info">
-        info
-    </div>
-    <div class="alert" highlight="alert-danger">
-        danger
+    <div ng-controller="AppCtrl">
+        <div class="well" apply-method="showHelloMessage()">
+            showHelloMessage()
+        </div>
+        <div class="well" apply-method="showName()">
+            showName()
+        </div>
     </div>
 </div>
 
