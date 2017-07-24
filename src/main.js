@@ -1,19 +1,61 @@
 var app = angular.module("angularBlackbox", []);
 
-app.controller("AppCtrl", function ($scope) {
-    $scope.showHelloMessage = function () {
-        alert("showHelloMessage");
-    };
+app.directive("entity", function () {
+    return {
+        restrict: "E",
+        scope: {},
 
-    $scope.showName = function () {
-        alert("showName");
-    };
+        controller: function ($scope) {
+            $scope.abilities = [];
+
+            this.addFly = function () {
+                $scope.abilities.push("fly");
+            };
+
+            this.addSwim = function () {
+                $scope.abilities.push("swim");
+            };
+
+            this.addWalk = function () {
+                $scope.abilities.push("walk");
+            };
+        },
+
+        link: function (scope, element) {
+            element.addClass("well");
+            element.bind("mouseenter", function () {
+                console.log(scope.abilities);
+            });
+        }
+    }
 });
 
-app.directive("applyMethod", function () {
-    return function (scope, element, attrs) {
-        element.bind("mouseenter", function () {
-            scope.$apply(attrs.applyMethod);
-        });
+app.directive("fly", function () {
+    return {
+        require: "entity",
+        restrict: "A",
+        link: function (scope, element, attrs, entityCtrl) {
+            entityCtrl.addFly();
+        }
+    }
+});
+
+app.directive("swim", function () {
+    return {
+        require: "entity",
+        restrict: "A",
+        link: function (scope, element, attrs, entityCtrl) {
+            entityCtrl.addSwim();
+        }
+    }
+});
+
+app.directive("walk", function () {
+    return {
+        require: "entity",
+        restrict: "A",
+        link: function (scope, element, attrs, entityCtrl) {
+            entityCtrl.addWalk();
+        }
     }
 });
