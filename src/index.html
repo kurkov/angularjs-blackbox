@@ -7,9 +7,13 @@
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
 </head>
 <body>
+
 <div ng-app="angularBlackbox">
-    <entity swim walk>Human</entity>
-    <entity fly walk>Bird</entity>
+    <div ng-controller="TaskManagerCtrl">
+        <p>
+            <task done="taskDone(task)"></task>
+        </p>
+    </div>
 </div>
 
 <script type="text/javascript" src="js/angular.min.js"></script>

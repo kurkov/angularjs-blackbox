@@ -1,61 +1,19 @@
 var app = angular.module("angularBlackbox", []);
 
-app.directive("entity", function () {
+app.controller("TaskManagerCtrl", function ($scope) {
+    $scope.taskDone = function (task) {
+        alert(task + " - task done!");
+    }
+});
+
+app.directive("task", function () {
     return {
         restrict: "E",
-        scope: {},
-
-        controller: function ($scope) {
-            $scope.abilities = [];
-
-            this.addFly = function () {
-                $scope.abilities.push("fly");
-            };
-
-            this.addSwim = function () {
-                $scope.abilities.push("swim");
-            };
-
-            this.addWalk = function () {
-                $scope.abilities.push("walk");
-            };
+        scope: {
+            done: '&'
         },
-
-        link: function (scope, element) {
-            element.addClass("well");
-            element.bind("mouseenter", function () {
-                console.log(scope.abilities);
-            });
-        }
-    }
-});
-
-app.directive("fly", function () {
-    return {
-        require: "entity",
-        restrict: "A",
-        link: function (scope, element, attrs, entityCtrl) {
-            entityCtrl.addFly();
-        }
-    }
-});
-
-app.directive("swim", function () {
-    return {
-        require: "entity",
-        restrict: "A",
-        link: function (scope, element, attrs, entityCtrl) {
-            entityCtrl.addSwim();
-        }
-    }
-});
-
-app.directive("walk", function () {
-    return {
-        require: "entity",
-        restrict: "A",
-        link: function (scope, element, attrs, entityCtrl) {
-            entityCtrl.addWalk();
-        }
+        template: '<input type="text" ng-model="task"> ' +
+        '{{ task }} ' +
+        '<button class="btn btn-default" ng-click="done({task:task})">Done</button>'
     }
 });
