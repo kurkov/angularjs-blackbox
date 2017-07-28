@@ -1,19 +1,14 @@
 var app = angular.module("angularBlackbox", []);
 
-app.controller("TaskManagerCtrl", function ($scope) {
-    $scope.taskDone = function (task) {
-        alert(task + " - task done!");
-    }
+app.controller("AppCtrl", function ($scope) {
+    $scope.ctrlColor = "green";
 });
 
-app.directive("task", function () {
+app.directive("testColor", function () {
     return {
-        restrict: "E",
         scope: {
-            done: '&'
+            color: "@"
         },
-        template: '<input type="text" ng-model="task"> ' +
-        '{{ task }} ' +
-        '<button class="btn btn-default" ng-click="done({task:task})">Done</button>'
+        template: '<div>{{color}}</div>'
     }
 });
