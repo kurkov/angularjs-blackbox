@@ -7,8 +7,8 @@ app.controller("AppCtrl", function ($scope) {
 app.directive("testColor", function () {
     return {
         scope: {
-            color: "@"
+            color: "="
         },
-        template: '<div>{{color}}</div>'
+        template: '<input type="text" ng-model="color">'
     }
 });

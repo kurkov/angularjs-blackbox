@@ -10,8 +10,12 @@
 
 <div ng-app="angularBlackbox">
     <div ng-controller="AppCtrl">
+        <p>Controller</p>
         <input type="text" ng-model="ctrlColor">
-        <div test-color color="{{ctrlColor}}"></div>
+
+        <br/><br/>
+        <p>Directive</p>
+        <div test-color color="ctrlColor"></div>
     </div>
 </div>
 
