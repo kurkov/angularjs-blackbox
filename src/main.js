@@ -1,14 +1,16 @@
 var app = angular.module("angularBlackbox", []);
 
 app.controller("AppCtrl", function ($scope) {
-    $scope.ctrlColor = "green";
+    $scope.display = function () {
+        alert("AppCtrl.display()");
+    }
 });
 
-app.directive("testColor", function () {
+app.directive("test", function () {
     return {
         scope: {
-            color: "="
+            showMessage: "&"
         },
-        template: '<input type="text" ng-model="color">'
+        template: '<button class="btn btn-default" ng-click="showMessage()">send message</button>'
     }
 });
