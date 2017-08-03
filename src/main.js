@@ -1,17 +1,24 @@
 var app = angular.module("angularBlackbox", []);
 
-app.controller("AppCtrl", function ($scope) {
-    $scope.display = function (message) {
-        alert(message);
-    }
-});
-
-app.directive("test", function () {
+app.directive("collapsible", function () {
     return {
+        restrict: "E",
+        transclude: true,
         scope: {
-            showMessage: "&"
+            title: '@'
         },
-        template: '<input type="text" ng-model="value"><br/>' +
-        '<button class="btn btn-default" ng-click="showMessage({message:value})">send message</button>'
+        template: '<div class="panel panel-default">' +
+                        '<div class="panel-heading">' +
+                            '<h3 class="panel-title" ng-click="triggerCollapsible()">{{title}}</h3>' +
+                        '</div>' +
+                        '<div class="panel-body" ng-show="isVisible" ng-transclude></div>' +
+                    '</div>',
+        link: function (scope) {
+            scope.isVisible = true;
+
+            scope.triggerCollapsible = function () {
+                scope.isVisible = !scope.isVisible;
+            }
+        }
     }
 });

@@ -9,9 +9,25 @@
 <body>
 
 <div ng-app="angularBlackbox">
-    <div ng-controller="AppCtrl">
-        <div test show-message="display(message)"></div>
+    <div style="margin: 15px">
+        <form>
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" class="form-control" ng-model="model.title">
+            </div>
+            <div class="form-group">
+                <label>Content</label>
+                <input type="text" class="form-control" ng-model="model.content">
+            </div>
+        </form>
+
+        <collapsible title="{{model.title}}">
+            <strong>Content:</strong> {{model.content}}
+        </collapsible>
+
     </div>
+
+
 </div>
 
 <script type="text/javascript" src="js/angular.min.js"></script>
