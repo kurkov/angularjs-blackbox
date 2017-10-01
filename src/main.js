@@ -1,13 +1,24 @@
 var app = angular.module("angularBlackbox", []);
 
-app.controller("AppCtrl", function ($scope) {
+// --- long annotation (used with minificators)
 
-});
+app.controller("AppCtrl", ["$http", "$scope", function (a, b) {
+    console.log($scope);
+}]);
 
-app.directive("panel", function () {
+// --- short annotation
+
+// app.controller("AppCtrl", function ($http, $scope) {
+//     console.log($scope);
+// });
+
+app.directive("testDir", function () {
     return {
         restrict: "E",
-        transclude: true,
-        template: '<div class="well" ng-transclude>this is directive panel</div>'
+        scope: {},
+        template: '<div>directive</div>',
+        link: function (scope) {
+            console.log(scope);
+        }
     }
 });
